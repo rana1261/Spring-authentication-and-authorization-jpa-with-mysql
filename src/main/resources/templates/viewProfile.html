@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <style type="text/css">
+    span {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+<div align="center">
+    <h1>Hi! [[${#request.remoteUser}]] </h1>
+    <h1>your Profile</h1>
+
+    <span>User Id:</span><span th:text="${user.user_id}"></span><br/><br/><br/>
+    <span>User name:</span><span th:text="${user.username}"></span><br/><br/><br/>
+    <span>Password:</span><span th:text="${decryptPassword}"></span><br/><br/><br/>
+    <span>E-mail:</span><span th:text="${user.email}"></span><br/><br/><br/>
+    <span>Role:</span><span th:text="${rolelist}"></span><br/><br/><br/>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+</div>
+
+</body>
+</html>

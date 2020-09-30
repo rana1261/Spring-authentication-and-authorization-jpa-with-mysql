@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication Home</title>
+</head>
+<body>
+<div align="center">
+    <h1>Authentication Home Page</h1>
+    <div sec:authorize="hasAnyRole('ADMIN','WONER')">
+    <a href="/addRole">Click here to add user extra Role</a>
+    </div>
+    <br><br><br>
+    <div sec:authorize="hasAnyRole('MANAGER','WONER')">
+        <a href="/manager">Click here to see manager</a>
+    </div>
+    <br><br><br>
+    <a href="/viewProfile">Click here to view your profile</a>
+    <br><br><br>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+</div>
+
+</body>
+</html>

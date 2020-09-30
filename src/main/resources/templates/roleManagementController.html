@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Role Management Controller</title>
+    <style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text],  select {
+        display: inline-block;
+        width: 200px;
+    }
+
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+<div align="center">
+    <h1>Role Management Controller</h1>
+    <h2  style="color:blue;" th:text="${success}" th:if="${success}"></h2>
+    <h2 style="color:red;" th:text="${error}" th:if="${error}"></h2>
+    <form  th:action="@{/AddUserRoles}" method="post" >
+        <label>User Id:</label>
+        <input type="text"  name="userid" /><br/>
+
+        <label>Add Role:</label>
+        <select  name="role">
+            <option th:each="p : ${listRole}" th:value="${p}" th:text="${p}" />
+        </select>
+        <br/>
+
+        <button type="submit">Role Add</button>
+    </form>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+</div>
+</body>
+</html>
